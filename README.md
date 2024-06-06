@@ -1,19 +1,5 @@
- 
-
-
-> Open this page at [https://mineninja77777.github.io/tpp/](https://mineninja77777.github.io/tpp/)
-
-## Use as Extension
-
-This repository can be added as an **extension** in MakeCode.
-
-* open [/](/)
-* click on **New Project**
-* click on **Extensions** under the gearwheel menu
-* search for **https://github.com/mineninja77777/tpp** and import
-
 ## Edit this project
-
+ 
 To edit this repository in MakeCode.
 
 * open [/](/)
