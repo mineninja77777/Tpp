@@ -99,7 +99,7 @@ function executeCode(){
 
 function splitIntoTokens(): string[]{
     let tokens: string[] = [];
-    let splitPoints: string[] = ["+", "=", "-", "*", "/", ".", ",", "(", ")"];
+    let splitPoints: string[] = ["+", "=", "-", "*", "/", ".", ",", "(", ")", "[", "]"];
 
 
     return tokens;
