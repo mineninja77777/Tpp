@@ -13,7 +13,8 @@
         "images.g.ts",
         "tilemap.g.jres",
         "tilemap.g.ts",
-        "ScreenInput.ts"
+        "ScreenInput.ts",
+        "lexer.ts"
     ],
     "testFiles": [
         "test.ts"
