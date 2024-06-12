@@ -1,36 +1,21 @@
 class Parser {
     private tokens: Token[] = [];
 
-    constructor(){
+    constructor(){};
 
-    }
-
-    /*
-     * Determines if the parsing is complete and the END OF FILE Is reached.
-     */
     private not_eof(): boolean {
         return this.tokens[0].type != TokenType.EOF;
     }
 
-    /**
-     * Returns the currently available token
-     */
     private at() {
         return this.tokens[0] as Token;
     }
 
-    /**
-     * Returns the previous token and then advances the tokens array to the next value.
-     */
     private eat() {
         const prev = this.tokens.shift() as Token;
         return prev;
     }
 
-    /**
-     * Returns the previous token and then advances the tokens array to the next value.
-     *  Also checks the type of expected token and throws if the values dnot match.
-     */
     private expect(type: TokenType, err: any) {
         const prev = this.tokens.shift() as Token;
         if (!prev || prev.type != type) {
@@ -146,7 +131,3 @@ class Parser {
         }
     }
 }
-
-let parser: Parser = new Parser();
-
-console.log(parser.produceAST("(10+5) * 5").body);
