@@ -16,7 +16,8 @@
         "ScreenInput.ts",
         "lexer.ts",
         "ast.ts",
-        "Parser.ts"
+        "Parser.ts",
+        "language/.ts"
     ],
     "testFiles": [
         "test.ts"
