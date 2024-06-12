@@ -1,4 +1,11 @@
+enum InputType {
+    SingleLine,
+    MultiLine
+}
+
 class InputOutputManager {
+
+    public state: InputType;
 
     private whiteLetters: { [key: string]: Image } = {};
 
@@ -10,10 +17,12 @@ class InputOutputManager {
     private cursor: Sprite = sprites.create(assets.image`cursor`);
     private cursorBack = 1;
 
-    constructor() {
+    constructor(s5tate: InputType) {
         this.initDict();
         this.drawScreen();
         this.handleKeyInputs();
+
+        this.state = s5tate;
 
         animation.runImageAnimation(this.cursor, assets.animation`cursorA`, 500, true);
         this.cursor.setPosition(1, 5);
@@ -207,7 +216,11 @@ class InputOutputManager {
             this.drawScreen();
         });
         browserEvents.Enter.onEvent(browserEvents.KeyEvent.Pressed, () => {
-            this.code.insertAt(this.code.length - this.cursorBack + 1, "e");
+            if(this.state == InputType.MultiLine){
+                this.code.insertAt(this.code.length - this.cursorBack + 1, "e");
+            } else if (this.state == InputType.SingleLine){
+                // run as calculator
+            }
             this.drawScreen();
         });
         browserEvents.Zero.onEvent(browserEvents.KeyEvent.Pressed, () => {
@@ -365,7 +378,7 @@ class InputOutputManager {
             this.drawScreen();
         });
         browserEvents.CapsLock.onEvent(browserEvents.KeyEvent.Pressed, () => {
-            // run this.code
+            // run as code
         });
     }
 }

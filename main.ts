@@ -2,4 +2,4 @@ namespace SpriteKind {
     export const Char = SpriteKind.create();
 }
 
-let inoutm: InputOutputManager = new InputOutputManager();
+let inoutm: InputOutputManager = new InputOutputManager(InputType.MultiLine);
