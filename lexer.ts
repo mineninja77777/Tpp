@@ -9,6 +9,7 @@ enum TokenType{
     CloseParen,
     BinaryOperator, 
     Let,
+    EOF,
 }
 
 // reserved Keywords
@@ -86,10 +87,8 @@ function tokenise(sourceCode: string[]): Token[]{
             }
         }
     }
+
+
+    tokens.push(token("EndOfFile", TokenType.EOF));
     return tokens
 }
-
-const tst = tokenise("let i = 2+5".split(""));
-tst.forEach((val: Token) => {
-    console.log(val);
-});

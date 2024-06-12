@@ -16,7 +16,7 @@ interface Program extends Stmt{
 
 interface Expr extends Stmt{}
 
-// baisically a two input func
+// basically a two input func
 interface BinaryExpr extends Expr{
     kind: "BinaryExpr";
     left: Expr;
@@ -33,3 +33,4 @@ interface NumericLiteral extends Expr {
     kind: "NumericLiteral";
     value: number;
 }
+

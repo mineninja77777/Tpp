@@ -15,7 +15,8 @@
         "tilemap.g.ts",
         "ScreenInput.ts",
         "lexer.ts",
-        "ast.ts"
+        "ast.ts",
+        "Parser.ts"
     ],
     "testFiles": [
         "test.ts"
