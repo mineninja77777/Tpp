@@ -70,7 +70,7 @@ class Parser {
         return left;
     }
 
-    // Handle Multiplication, Division & Modulo Operations
+    // Handle Multiplication, Division & Modulus Operations
     private parse_multiplicitave_expr(): Expr {
         let left = this.parse_primary_expr();
 
