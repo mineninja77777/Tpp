@@ -456,25 +456,36 @@ class InputOutputManager {
             this.drawScreen();
         });
         browserEvents.ArrowUp.onEvent(browserEvents.KeyEvent.Pressed, () => {
-            
-            this.scroll -= 9;
+            if(this.state == InputType.Menu){
+                this.code = "PLEASE SELECT MODEe  > CODINGe    CALCULATOR".split("");
+            } else {
+                this.scroll -= 9;
+            }
             this.drawScreen();
         });
         browserEvents.ArrowDown.onEvent(browserEvents.KeyEvent.Pressed, () => {
-            this.scroll += 9;
+            if (this.state == InputType.Menu) {
+                this.code = "PLEASE SELECT MODEe    CODINGe  > CALCULATOR".split("");
+            } else {
+                this.scroll += 9;
+            }
             this.drawScreen();
         });
         browserEvents.ArrowLeft.onEvent(browserEvents.KeyEvent.Pressed, () => {
-            this.cursorBack += 1;
-            if (this.cursorBack - 1 > this.code.length) {
-                this.cursorBack = this.code.length + 1;
+            if (this.state != InputType.Menu){
+                this.cursorBack += 1;
+                if (this.cursorBack - 1 > this.code.length) {
+                    this.cursorBack = this.code.length + 1;
+                }
             }
             this.drawScreen();
         });
         browserEvents.ArrowRight.onEvent(browserEvents.KeyEvent.Pressed, () => {
-            this.cursorBack -= 1;
-            if (this.cursorBack <= 1) {
-                this.cursorBack = 1;
+            if (this.state != InputType.Menu){
+                this.cursorBack -= 1;
+                if (this.cursorBack <= 1) {
+                    this.cursorBack = 1;
+                }
             }
             this.drawScreen();
         });

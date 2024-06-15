@@ -1,1 +1,1 @@
-// tests go here etc etc
+console.log(JSON.stringify(cHandleExpr("1 + (1 * 2)".split(""))));

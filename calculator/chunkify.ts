@@ -38,17 +38,17 @@ function Ctokens(src: string[]): CProg{
 }
 
 function cHandleExpr(src: string[]): CStmt{
-    let stmt: CStmt = {contents: []} as CStmt;
+    let stmt: CStmt = { kind: "Statement",  contents: [] } as CStmt;
 
     for(let i = 0; i < src.length; i++){
         if(isNum(src[i])){
-            stmt.contents.push({value: parseFloat(src[i])} as CNum);
+            stmt.contents.push({ kind: "Number", value: parseFloat(src[i])} as CNum);
         } else if (src[i] == "+" || src[i] == "-" || src[i] == "*" || src[i] == "/") {
-            stmt.contents.push({ symb: src[i] } as COpr);
+            stmt.contents.push({ kind: "Operator",  symb: src[i] } as COpr);
         } else if(src[i] == "("){
             let next: CStmt = cHandleExpr(src.slice(i + 1));
             stmt.contents.push(next);
-            i+=next.contents.length + 1;
+            i+=next.contents.length + 2;
         } else if (src[i] == ")") {
             return stmt;
         }
@@ -57,5 +57,3 @@ function cHandleExpr(src: string[]): CStmt{
 }
 
 
-
-console.log(cHandleExpr("1 + (1 * 2)".split("")).contents[2]);
