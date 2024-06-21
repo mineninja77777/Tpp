@@ -1,4 +1,4 @@
-// split into chunks so that bodmas
+/* redundant
 
 type Csts = 
     "Statement" |
@@ -55,5 +55,4 @@ function cHandleExpr(src: string[]): CStmt{
     }
     return stmt;
 }
-
-
+*/

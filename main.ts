@@ -7,7 +7,7 @@ namespace SpriteKind {
     export const Char = SpriteKind.create();
 }
 
-let inoutm: InputOutputManager = new InputOutputManager(InputType.Menu);
+let inoutm: InputOutputManager = new InputOutputManager(OProg.Menu);
 
-inoutm.code = "PLEASE SELECT MODEe  > CODINGe    CALCULATOR".split("");
+inoutm.code = "PLEASE SELECT MODEe  > T++e    ASM++".split("");
 inoutm.drawScreen();

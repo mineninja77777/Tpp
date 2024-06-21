@@ -18,7 +18,8 @@
         "language/ast.ts",
         "language/lexer.ts",
         "calculator/calculate.ts",
-        "calculator/chunkify.ts"
+        "calculator/chunkify.ts",
+        "asm/breakDown.ts"
     ],
     "testFiles": [
         "test.ts"
