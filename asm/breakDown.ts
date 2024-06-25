@@ -9,7 +9,58 @@ valid funcs:
     // some sort of input
 */
 
-function asmSplit(code: string[]){
+type asmFuncs = 
+"save" |
+"load" |
+"add"  |
+"goto" |
+"if"   |
+"setPx";
+
+interface ASMfuncCall{
+    type: asmFuncs;
+    index: number;
+}
+
+interface ASMsave extends ASMfuncCall{
+    type: "save";
+    location: number;
+    kind: string;   // type param
+    val: any;       // num, str, bool, any[]
+}
+
+interface ASMload extends ASMfuncCall {
+    type: "load";
+    location: number;
+}
+
+interface ASMadd extends ASMfuncCall {
+    type: "add";
+    location: number;
+    a: number;
+    b: number;
+}
+
+interface ASMgoto extends ASMfuncCall {
+    type: "goto";
+    location: number;
+}
+
+interface ASMif extends ASMfuncCall {
+    type: "if";
+    location: number;
+    kind: string;   // type param
+    val: any;       // num, str, bool, any[]
+}
+
+interface ASMsetPx extends ASMfuncCall {
+    type: "setPx";
+    rgb: number[];
+    x: number;
+    y: number;
+}
+
+function asmTokenise(code: string[]){
 
 }
 function lineify(code: string[], splitters: string[]){
