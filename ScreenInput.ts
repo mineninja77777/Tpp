@@ -62,7 +62,7 @@ class InputOutputManager {
             sprites.destroy(value);
         })
 
-        if(this.state = OProg.Menu){
+        if(this.state == OProg.Menu){
             this.cursor.setFlag(SpriteFlag.Invisible, true);
         } else {
             this.cursor.setFlag(SpriteFlag.Invisible, false);
@@ -271,7 +271,9 @@ class InputOutputManager {
             this.drawScreen();
         });
         browserEvents.Z.onEvent(browserEvents.KeyEvent.Pressed, () => {
+            console.log(this.state)
             if(this.state != OProg.Menu){
+                console.log(1)
                 this.code.insertAt(this.code.length - this.cursorBack + 1, "Z");
             }
             this.drawScreen();
@@ -280,14 +282,17 @@ class InputOutputManager {
             if(this.state != OProg.Menu){
                 this.code.insertAt(this.code.length - this.cursorBack + 1, "e");
             } else {
-                if (this.code ==  "PLEASE SELECT MODEe  > T++e    ASM++".split("")){
+                console.log(compareList(this.code, "PLEASE SELECT MODEe  > T++e    ASM++".split("")))
+                if (compareList(this.code,"PLEASE SELECT MODEe  > T++e    ASM++".split(""))){
                     console.log("a")
                     this.state = OProg.T;
-                } else if (this.code == "PLEASE SELECT MODEe    T++e  > ASM++".split("")) {
+                } else if (compareList(this.code, "PLEASE SELECT MODEe    T++e  > ASM++".split(""))) {
                     this.state = OProg.ASM;
                 }
+                console.log(this.state)
                 this.code = [];
                 this.cursor.setFlag(SpriteFlag.Invisible, false);
+                this.cursorBack = 1;
             }
             this.drawScreen();
         });
