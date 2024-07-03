@@ -29,6 +29,38 @@ type asmFuncs =
 "if"   |
 "setPx";
 
+type asmTypes = 
+"str"|
+"num"|
+"bool"|
+"list";
+
+interface ASMmem{
+    type: asmTypes;
+}
+
+interface ASMstr extends ASMmem{
+    type: "str";
+    txt: string;
+}
+
+interface ASMnum extends ASMmem{
+    type: "num";
+    val: number;
+}
+
+interface ASMbool extends ASMmem {
+    type: "bool";
+    trfa: boolean;
+}
+
+interface ASMlist extends ASMmem {
+    type: "list";
+    cont: ASMmem[];
+}
+
+
+
 interface ASMfuncCall{
     type: asmFuncs;
     index: number;
