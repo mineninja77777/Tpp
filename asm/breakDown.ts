@@ -104,18 +104,17 @@ interface ASMsetPx extends ASMfuncCall {
     y: number;
 }
 
-function asmTokenise(code: string[]){
-
-}
-function lineify(code: string[], splitters: string[]){
+function asmChunkify(code: string[]): string[]{
     let out: string[] = [];
-    let curr: string = "";
-    code.forEach((val: string, ind: number)=>{
-        if(splitters.indexOf(val) == -1){
-            out.push(curr);
-            curr = "";
-        } else {
-            curr += val;
+    let cur: string = "";
+    let seperators: string[] = [" ", ".", ";"];
+    code.forEach((str,i)=>{
+        if(seperators.indexOf(str) == -1){
+            out.push(cur);
+            cur = "";
+        } else{
+            cur += str;
         }
     })
+    return out;
 }

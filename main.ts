@@ -1,11 +1,7 @@
-// todo 
-// make it possible to select mode
-// code calculator
-// continue with interpreter
-
 namespace SpriteKind {
     export const Char = SpriteKind.create();
 }
+
 
 function compareList(l1: any[], l2: any[]): boolean{
     if(l1.length != l2.length){
