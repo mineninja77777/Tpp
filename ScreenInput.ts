@@ -79,7 +79,7 @@ class InputOutputManager {
             x += 6;
             if (x >= this.lineLength) {
                 y += 9;
-                x = 4;
+                x = 10;
             }
 
             if (this.code[i] == "e") {

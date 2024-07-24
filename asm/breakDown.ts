@@ -18,12 +18,14 @@ valid funcs:
 2    add 0 a0 a1;
 3    if a0 10 {goto 2};
 
+ * a23 = 23
+ * b23 = thing at index 23 of memory
 
 */
 
 type asmFuncs = 
 "save" |
-"load" |
+"log" |
 "add"  |
 "goto" |
 "if"   |
@@ -69,12 +71,12 @@ interface ASMfuncCall{
 interface ASMsave extends ASMfuncCall{
     type: "save";
     location: number;
-    kind: string;   // type param
+    kind: asmTypes;   // type param
     val: any;       // num, str, bool, any[]
 }
 
-interface ASMload extends ASMfuncCall {
-    type: "load";
+interface ASMlog extends ASMfuncCall {
+    type: "log";
     location: number;
 }
 
@@ -109,12 +111,25 @@ function asmChunkify(code: string[]): string[]{
     let cur: string = "";
     let seperators: string[] = [" ", ".", ";"];
     code.forEach((str,i)=>{
-        if(seperators.indexOf(str) == -1){
+        if(seperators.indexOf(str) != -1){
             out.push(cur);
             cur = "";
-        } else{
+        }
+        else if(str == '"' || str == "'"){
+            out.push(cur);
+            out.push(str)
+            cur = "";
+        } 
+        else{
             cur += str;
         }
     })
     return out;
 }
+
+function asmTokenize(chuckified: string[]): ASMfuncCall[]{
+    let out: ASMfuncCall[] = [];
+
+    return out;
+}
+console.log(asmChunkify("abc abc 12 39 239 9430 2380f djsio ] [ ; jdak a a;b;c;d;e;f".split("")))
