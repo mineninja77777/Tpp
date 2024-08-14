@@ -1,10 +1,10 @@
 /*
 valid funcs:
-    save - {params: [location: number - index of location in memory, type: type - could be num, str, bool, list[any], func; val: any - type is based on type input]} - saves a value of a type to an index in memory
+    save - {params: [location: number - index of location in memory, type: type - could be num, str, bool, list[any]; val: any - type is based on type input]} - saves a value of a type to an index in memory
     load - {params: [location: number - place to load from]} loads a value from an index in memory and console logs it
     add - {params: [location: number - place to save sum to], num1: number - 1st number to add, num2: number - 2nd number to add}
     goto - {params: [location: number - line to go to]} - goes back/forwards to a specific line
-    if - {params: [val1: number, val2: number, code: func]} - executes code if val1 == val2
+    cgoto - {params: [val1: number, val2: number, pos: int]} - goes to pos if val1 == val2, conditional goto
     setPx - {params: [x: number, y: number, rgb: list - [red, green, blue]} - sets  pixel at (x,y) (screen is 120 * 120) to colour rgb
     // some sort of input
 
@@ -13,23 +13,16 @@ valid funcs:
         [1, num, 1],
     }
 
-0    save 0 num 1;
-1    save 1 num 1;
-2    add 0 a0 a1;
-3    if a0 10 {goto 2};
+0    save b0 num a0;
+1    save b1 num a1;
+2    add b0 a0 a1;
 
  * a23 = 23
  * b23 = thing at index 23 of memory
 
 */
 
-type asmFuncs = 
-"save" |
-"log" |
-"add"  |
-"goto" |
-"if"   |
-"setPx";
+
 
 type asmTypes = 
 "str"|
@@ -63,48 +56,6 @@ interface ASMlist extends ASMmem {
 
 
 
-interface ASMfuncCall{
-    type: asmFuncs;
-    index: number;
-}
-
-interface ASMsave extends ASMfuncCall{
-    type: "save";
-    location: number;
-    kind: asmTypes;   // type param
-    val: any;       // num, str, bool, any[]
-}
-
-interface ASMlog extends ASMfuncCall {
-    type: "log";
-    location: number;
-}
-
-interface ASMadd extends ASMfuncCall {
-    type: "add";
-    location: number;
-    a: number;
-    b: number;
-}
-
-interface ASMgoto extends ASMfuncCall {
-    type: "goto";
-    location: number;
-}
-
-interface ASMif extends ASMfuncCall {
-    type: "if";
-    val1: any;
-    val2: any;
-    code: ASMfuncCall;
-}
-
-interface ASMsetPx extends ASMfuncCall {
-    type: "setPx";
-    rgb: number[];
-    x: number;
-    y: number;
-}
 
 function asmChunkify(code: string[]): string[]{
     let out: string[] = [];
@@ -117,7 +68,7 @@ function asmChunkify(code: string[]): string[]{
         }
         else if(str == '"' || str == "'"){
             out.push(cur);
-            out.push(str)
+            out.push(str);
             cur = "";
         } 
         else{
@@ -126,10 +77,3 @@ function asmChunkify(code: string[]): string[]{
     })
     return out;
 }
-
-function asmTokenize(chuckified: string[]): ASMfuncCall[]{
-    let out: ASMfuncCall[] = [];
-
-    return out;
-}
-console.log(asmChunkify("abc abc 12 39 239 9430 2380f djsio ] [ ; jdak a a;b;c;d;e;f".split("")))

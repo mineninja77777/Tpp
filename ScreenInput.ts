@@ -470,7 +470,7 @@ class InputOutputManager {
         });
         browserEvents.ArrowUp.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if(this.state == OProg.Menu){
-                this.code = "PLEASE SELECT MODEe  > T++e    ASM++".split("");
+                this.code = "PLEASE SELECT MODEe  > T++e    ASM--".split("");
             } else {
                 this.scroll -= 9;
             }
@@ -478,7 +478,7 @@ class InputOutputManager {
         });
         browserEvents.ArrowDown.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if (this.state == OProg.Menu) {
-                this.code = "PLEASE SELECT MODEe    T++e  > ASM++".split("");
+                this.code = "PLEASE SELECT MODEe    T++e  > ASM--".split("");
             } else {
                 this.scroll += 9;
             }
@@ -507,3 +507,4 @@ class InputOutputManager {
         });
     }
 }
+
