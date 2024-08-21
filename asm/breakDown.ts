@@ -1,17 +1,17 @@
 /*
 valid funcs:
-    save - {params: [location: number - index of location in memory, type: type - could be num, str, bool, list[any]; val: any - type is based on type input]} - saves a value of a type to an index in memory
-    load - {params: [location: number - place to load from]} loads a value from an index in memory and console logs it
-    add - {params: [location: number - place to save sum to], num1: number - 1st number to add, num2: number - 2nd number to add}
-    goto - {params: [location: number - line to go to]} - goes back/forwards to a specific line
-    cgoto - {params: [val1: number, val2: number, pos: int]} - goes to pos if val1 == val2, conditional goto
-    setPx - {params: [x: number, y: number, rgb: list - [red, green, blue]} - sets  pixel at (x,y) (screen is 120 * 120) to colour rgb
+    save - {params: [location: number - index of location in memory, type: type - could be num, str, bool, list[any]; val: any - type is based on type input]} - saves a value of a type to an index in memory;
+    load - {params: [location: number - place to load from]} loads a value from an index in memory and console logs it;
+    add - {params: [location: number - place to save sum to], num1: number - 1st number to add, num2: number - 2nd number to add};
+    goto - {params: [location: number - line to go to]} - goes back/forwards to a specific line;
+    cgoto - {params: [val1: number, val2: number, pos: int]} - goes to pos if val1 == val2, conditional goto;
+    setPx - {params: [x: number, y: number, rgb: list - [red, green, blue]} - sets  pixel at (x,y) (screen is 120 * 120) to colour rgb;
     // some sort of input
 
-    {
-        [0, num, 1],
-        [1, num, 1],
-    }
+    [
+        {0, num, 1},
+        {1, num, 1},
+    ]
 
 0    save b0 num a0;
 1    save b1 num a1;
@@ -56,6 +56,31 @@ interface ASMlist extends ASMmem {
 
 
 
+interface ASMline {
+    contents: string[];
+    line: number;
+}
+
+function asmLineify(code: string[]): string[] {
+    let out: string[] = [];
+    let cur: string = "";
+    let seperators: string[] = [";", "e"];
+    code.forEach((str, i) => {
+        if (seperators.indexOf(str) != -1) {
+            out.push(cur);
+            cur = "";
+        }
+        else if (str == '"' || str == "'") {
+            out.push(cur);
+            out.push(str);
+            cur = "";
+        }
+        else {
+            cur += str;
+        }
+    })
+    return out;
+}
 
 function asmChunkify(code: string[]): string[]{
     let out: string[] = [];
@@ -76,4 +101,8 @@ function asmChunkify(code: string[]): string[]{
         }
     })
     return out;
+}
+
+function ASMrun(lineifiedCode: string[]){
+        
 }
