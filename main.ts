@@ -16,7 +16,12 @@ function compareList(l1: any[], l2: any[]): boolean{
     return f;
 }
 
+
+
+
+
 let inoutm: InputOutputManager = new InputOutputManager(OProg.Menu);
 
 inoutm.code = "PLEASE SELECT MODEe  > T++e    ASM--".split("");
 inoutm.drawScreen();
+

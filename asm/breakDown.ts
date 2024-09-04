@@ -1,6 +1,6 @@
 /*
 valid funcs:
-    save - {params: [location: number - index of location in memory, type: type - could be num, str, bool, list[any]; val: any - type is based on type input]} - saves a value of a type to an index in memory;
+    save - {params: [location: number - index of location in memory, type: type - could be num, str, bool; val: any - type is based on type input]} - saves a value of a type to an index in memory;
     load - {params: [location: number - place to load from]} loads a value from an index in memory and console logs it;
     add - {params: [location: number - place to save sum to], num1: number - 1st number to add, num2: number - 2nd number to add};
     goto - {params: [location: number - line to go to]} - goes back/forwards to a specific line;
@@ -61,48 +61,49 @@ interface ASMline {
     line: number;
 }
 
-function asmLineify(code: string[]): string[] {
-    let out: string[] = [];
+//works
+function asmLineify(code: string[]): ASMline[] {
+    let out: ASMline[] = [];
+    let lineCount: number = 0;
     let cur: string = "";
     let seperators: string[] = [";", "e"];
     code.forEach((str, i) => {
         if (seperators.indexOf(str) != -1) {
-            out.push(cur);
-            cur = "";
-        }
-        else if (str == '"' || str == "'") {
-            out.push(cur);
-            out.push(str);
+            out.push({contents: [cur], line: lineCount++});
             cur = "";
         }
         else {
             cur += str;
         }
     })
+    out.push({ contents: [cur], line: lineCount++});
+    cur = "";
     return out;
 }
 
-function asmChunkify(code: string[]): string[]{
-    let out: string[] = [];
+// doesnt works
+function asmChunkify(lines: ASMline[]): ASMline[]{
+    let out: ASMline[] = [];
+    let ot: string[] = [];
     let cur: string = "";
-    let seperators: string[] = [" ", ".", ";"];
-    code.forEach((str,i)=>{
-        if(seperators.indexOf(str) != -1){
-            out.push(cur);
-            cur = "";
-        }
-        else if(str == '"' || str == "'"){
-            out.push(cur);
-            out.push(str);
-            cur = "";
-        } 
-        else{
-            cur += str;
-        }
+    let seperators: string = " ";
+    lines.forEach((line,i)=>{
+        line.contents[0].split("").forEach((str,i)=>{
+            if (str == seperators) {
+                ot.push(cur);
+                cur = "";
+            }
+            else {
+                cur += str;
+            }
+        })
+        out.push({contents: ot, line: i});
+        ot = [];
+        cur = "";
     })
     return out;
 }
 
 function ASMrun(lineifiedCode: string[]){
-        
+    
 }
