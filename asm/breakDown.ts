@@ -8,10 +8,10 @@ valid funcs:
     setPx - {params: [x: number, y: number, rgb: list - [red, green, blue]} - sets  pixel at (x,y) (screen is 120 * 120) to colour rgb;
     // some sort of input
 
-    [
-        {0, num, 1},
-        {1, num, 1},
-    ]
+[
+    {0, num, 1},
+    {1, num, 1},
+]
 
 0    save b0 num a0;
 1    save b1 num a1;
@@ -81,7 +81,7 @@ function asmLineify(code: string[]): ASMline[] {
     return out;
 }
 
-// doesnt works
+// does works
 function asmChunkify(lines: ASMline[]): ASMline[]{
     let out: ASMline[] = [];
     let ot: string[] = [];
@@ -97,13 +97,17 @@ function asmChunkify(lines: ASMline[]): ASMline[]{
                 cur += str;
             }
         })
+        ot.push(cur);
+        cur = "";
         out.push({contents: ot, line: i});
         ot = [];
-        cur = "";
     })
     return out;
 }
 
-function ASMrun(lineifiedCode: string[]){
-    
+function ASMrun(code: ASMline[]){
+    let currentLine: number = 0;
+    while(currentLine < code.length){
+        
+    }
 }
