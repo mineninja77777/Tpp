@@ -1,12 +1,11 @@
 /*
 valid funcs:
-    save - {params: [location: number - index of location in memory, type: type - could be num, str, bool; val: any - type is based on type input]} - saves a value of a type to an index in memory;
+    save - {params: [location: number - index of location in memory, type: type - could be num, str, bool, list<type>; val: any - type is based on type input]} - saves a value of a type to an index in memory;
     load - {params: [location: number - place to load from]} loads a value from an index in memory and console logs it;
     add - {params: [location: number - place to save sum to], num1: number - 1st number to add, num2: number - 2nd number to add};
     goto - {params: [location: number - line to go to]} - goes back/forwards to a specific line;
     cgoto - {params: [val1: number, val2: number, pos: int]} - goes to pos if val1 == val2, conditional goto;
-    setPx - {params: [x: number, y: number, rgb: list - [red, green, blue]} - sets  pixel at (x,y) (screen is 120 * 120) to colour rgb;
-    // some sort of input
+
 
 [
     {0, num, 1},
@@ -19,6 +18,12 @@ valid funcs:
 
  * a23 = 23
  * b23 = thing at index 23 of memory
+ * p23 = pixel 23 (there are 160*120) (will return number between 0-15)
+ * i0  = is up pressed
+ * i1  = is left pressed
+ * i2  = is down pressed
+ * i3  = is right pressed
+ * i(letter, 'SHIFT', 'ALT' or 'CTRL') = is key pressed (ROM)
 
 */
 
@@ -51,6 +56,7 @@ interface ASMbool extends ASMmem {
 
 interface ASMlist extends ASMmem {
     type: "list";
+    contType: string; // num str bool list
     cont: ASMmem[];
 }
 
@@ -105,9 +111,3 @@ function asmChunkify(lines: ASMline[]): ASMline[]{
     return out;
 }
 
-function ASMrun(code: ASMline[]){
-    let currentLine: number = 0;
-    while(currentLine < code.length){
-        
-    }
-}

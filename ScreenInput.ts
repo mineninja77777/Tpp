@@ -1,13 +1,19 @@
 enum OProg {
-    T,
-    ASM,
+    RUN,
+    TYPING,
     Menu
+}
+
+enum Lang {
+    T,
+    ASM
 }
 
 
 class InputOutputManager {
 
     public state: OProg;
+    public language: Lang;
 
     private whiteLetters: { [key: string]: Image } = {};
 
@@ -113,183 +119,233 @@ class InputOutputManager {
     private handleKeyInputs() {
         browserEvents.A.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if(this.state != OProg.Menu){
-                this.code.insertAt(this.code.length - this.cursorBack + 1, "A");
+                if(this.state != OProg.RUN){
+                    this.code.insertAt(this.code.length - this.cursorBack + 1, "A");
+                }
             }
             this.drawScreen();
         });
         browserEvents.B.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if(this.state != OProg.Menu){
-                this.code.insertAt(this.code.length - this.cursorBack + 1, "B");
+                if(this.state != OProg.RUN){
+                    this.code.insertAt(this.code.length - this.cursorBack + 1, "B");
+                }
             }
             this.drawScreen();
         });
         browserEvents.C.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if(this.state != OProg.Menu){
-                this.code.insertAt(this.code.length - this.cursorBack + 1, "C");
+                if(this.state != OProg.RUN){
+                    this.code.insertAt(this.code.length - this.cursorBack + 1, "C");
+                }
             }
             this.drawScreen();
         });
         browserEvents.D.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if(this.state != OProg.Menu){
-                this.code.insertAt(this.code.length - this.cursorBack + 1, "D");
+                if(this.state != OProg.RUN){
+                    this.code.insertAt(this.code.length - this.cursorBack + 1, "D");
+                }
             }
             this.drawScreen();
         });
         browserEvents.E.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if(this.state != OProg.Menu){
-                this.code.insertAt(this.code.length - this.cursorBack + 1, "E");
+                if(this.state != OProg.RUN){
+                    this.code.insertAt(this.code.length - this.cursorBack + 1, "E");
+                }
             }
             this.drawScreen();
         });
         browserEvents.F.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if(this.state != OProg.Menu){
-                this.code.insertAt(this.code.length - this.cursorBack + 1, "F");
+                if(this.state != OProg.RUN){
+                    this.code.insertAt(this.code.length - this.cursorBack + 1, "F");
+                }
             }
             this.drawScreen();
         });
         browserEvents.G.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if(this.state != OProg.Menu){
-                this.code.insertAt(this.code.length - this.cursorBack + 1, "G");
+                if(this.state != OProg.RUN){
+                    this.code.insertAt(this.code.length - this.cursorBack + 1, "G");
+                }
             }
             this.drawScreen();
         });
         browserEvents.H.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if(this.state != OProg.Menu){
-                this.code.insertAt(this.code.length - this.cursorBack + 1, "H");
+                if(this.state != OProg.RUN){
+                    this.code.insertAt(this.code.length - this.cursorBack + 1, "H");
+                }
             }
             this.drawScreen();
         });
         browserEvents.I.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if(this.state != OProg.Menu){
-                this.code.insertAt(this.code.length - this.cursorBack + 1, "I");
+                if(this.state != OProg.RUN){
+                    this.code.insertAt(this.code.length - this.cursorBack + 1, "I");
+                }
             }
             this.drawScreen();
         });
         browserEvents.J.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if(this.state != OProg.Menu){
-                this.code.insertAt(this.code.length - this.cursorBack + 1, "J");
+                if(this.state != OProg.RUN){
+                    this.code.insertAt(this.code.length - this.cursorBack + 1, "J");
+                }
             }
             this.drawScreen();
         });
         browserEvents.K.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if(this.state != OProg.Menu){
-                this.code.insertAt(this.code.length - this.cursorBack + 1, "K");
+                if(this.state != OProg.RUN){
+                    this.code.insertAt(this.code.length - this.cursorBack + 1, "K");
+                }
             }
             this.drawScreen();
         });
         browserEvents.L.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if(this.state != OProg.Menu){
-                this.code.insertAt(this.code.length - this.cursorBack + 1, "L");
+                if(this.state != OProg.RUN){
+                    this.code.insertAt(this.code.length - this.cursorBack + 1, "L");
+                }
             }
             this.drawScreen();
         });
         browserEvents.M.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if(this.state != OProg.Menu){
-                this.code.insertAt(this.code.length - this.cursorBack + 1, "M");
+                if(this.state != OProg.RUN){
+                    this.code.insertAt(this.code.length - this.cursorBack + 1, "M");
+                }
             }
             this.drawScreen();
         });
         browserEvents.N.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if(this.state != OProg.Menu){
-                this.code.insertAt(this.code.length - this.cursorBack + 1, "N");
+                if(this.state != OProg.RUN){
+                    this.code.insertAt(this.code.length - this.cursorBack + 1, "N");
+                }
             }
             this.drawScreen();
         });
         browserEvents.O.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if (this.state != OProg.Menu){
-                if (browserEvents.Shift.isPressed()) {
-                    this.code.insertAt(this.code.length - this.cursorBack + 1, "{");
-                } else {
-                    this.code.insertAt(this.code.length - this.cursorBack + 1, "O");
+                if(this.state != OProg.RUN){
+                    if (browserEvents.Shift.isPressed()) {
+                            this.code.insertAt(this.code.length - this.cursorBack + 1, "{");
+                    } else {
+                        this.code.insertAt(this.code.length - this.cursorBack + 1, "O");
+                    }
                 }
             }
             this.drawScreen();
         });
         browserEvents.P.onEvent(browserEvents.KeyEvent.Pressed, () => {
-            if (this.state != OProg.Menu) {
-                if (browserEvents.Shift.isPressed()) {
-                    this.code.insertAt(this.code.length - this.cursorBack + 1, "}");
-                } else {
-                    this.code.insertAt(this.code.length - this.cursorBack + 1, "P");
+            if (this.state != OProg.Menu) 
+                if(this.state != OProg.RUN){{
+                    if (browserEvents.Shift.isPressed()) {
+                            this.code.insertAt(this.code.length - this.cursorBack + 1, "}");
+                    } else {
+                        this.code.insertAt(this.code.length - this.cursorBack + 1, "P");
+                    }
                 }
             }
             this.drawScreen();
         });
         browserEvents.Q.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if(this.state != OProg.Menu){
-                this.code.insertAt(this.code.length - this.cursorBack + 1, "Q");
+                if(this.state != OProg.RUN){
+                    this.code.insertAt(this.code.length - this.cursorBack + 1, "Q");
+                }
             }
             this.drawScreen();
         });
         browserEvents.R.onEvent(browserEvents.KeyEvent.Pressed, () => {
-            console.log(this.state)
             if(this.state != OProg.Menu){
-                this.code.insertAt(this.code.length - this.cursorBack + 1, "R");
+                if(this.state != OProg.RUN){
+                    this.code.insertAt(this.code.length - this.cursorBack + 1, "R");
+                }
             }
             this.drawScreen();
         });
         browserEvents.S.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if(this.state != OProg.Menu){
-                this.code.insertAt(this.code.length - this.cursorBack + 1, "S");
+                if(this.state != OProg.RUN){
+                    this.code.insertAt(this.code.length - this.cursorBack + 1, "S");
+                }
             }
             this.drawScreen();
         });
         browserEvents.T.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if(this.state != OProg.Menu){
-                this.code.insertAt(this.code.length - this.cursorBack + 1, "T");
+                if(this.state != OProg.RUN){
+                    this.code.insertAt(this.code.length - this.cursorBack + 1, "T");
+                }
             }
             this.drawScreen();
         });
         browserEvents.U.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if(this.state != OProg.Menu){
-                this.code.insertAt(this.code.length - this.cursorBack + 1, "U");
+                if(this.state != OProg.RUN){
+                    this.code.insertAt(this.code.length - this.cursorBack + 1, "U");
+                }
             }
             this.drawScreen();
         });
         browserEvents.V.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if(this.state != OProg.Menu){
-                this.code.insertAt(this.code.length - this.cursorBack + 1, "V");
+                if(this.state != OProg.RUN){
+                    this.code.insertAt(this.code.length - this.cursorBack + 1, "V");
+                }
             }
             this.drawScreen();
         });
         browserEvents.W.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if(this.state != OProg.Menu){
-                this.code.insertAt(this.code.length - this.cursorBack + 1, "W");
+                if(this.state != OProg.RUN){
+                    this.code.insertAt(this.code.length - this.cursorBack + 1, "W");
+                }
             }
             this.drawScreen();
         });
         browserEvents.X.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if(this.state != OProg.Menu){
-                this.code.insertAt(this.code.length - this.cursorBack + 1, "X");
+                if(this.state != OProg.RUN){
+                    this.code.insertAt(this.code.length - this.cursorBack + 1, "X");
+                }
             }
             this.drawScreen();
         });
         browserEvents.Y.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if(this.state != OProg.Menu){
-                this.code.insertAt(this.code.length - this.cursorBack + 1, "Y");
+                if(this.state != OProg.RUN){
+                    this.code.insertAt(this.code.length - this.cursorBack + 1, "Y");
+                }
             }
             this.drawScreen();
         });
         browserEvents.Z.onEvent(browserEvents.KeyEvent.Pressed, () => {
-            console.log(this.state)
             if(this.state != OProg.Menu){
-                console.log(1)
+                if(this.state != OProg.RUN){
                 this.code.insertAt(this.code.length - this.cursorBack + 1, "Z");
+                }
             }
             this.drawScreen();
         });
         browserEvents.Enter.onEvent(browserEvents.KeyEvent.Pressed, () => {
-            if(this.state != OProg.Menu){
-                this.code.insertAt(this.code.length - this.cursorBack + 1, "e");
-            } else {
-                console.log(compareList(this.code, "PLEASE SELECT MODEe  > T++e    ASM++".split("")))
-                if (compareList(this.code,"PLEASE SELECT MODEe  > T++e    ASM++".split(""))){
-                    console.log("a")
-                    this.state = OProg.T;
-                } else if (compareList(this.code, "PLEASE SELECT MODEe    T++e  > ASM++".split(""))) {
-                    this.state = OProg.ASM;
+            if((this.state != OProg.Menu)){
+                if(this.state != OProg.RUN){
+                    this.code.insertAt(this.code.length - this.cursorBack + 1, "e");
                 }
-                console.log(this.state)
+            } else {
+                if (compareList(this.code,"PLEASE SELECT MODEe  > T++e    ASM--".split(""))){
+                    this.language = Lang.T;
+                } else if (compareList(this.code, "PLEASE SELECT MODEe    T++e  > ASM--".split(""))) {
+                    this.language = Lang.ASM;
+                }
+                this.state = OProg.TYPING;
+
                 this.code = [];
                 this.cursor.setFlag(SpriteFlag.Invisible, false);
                 this.cursorBack = 1;
@@ -298,174 +354,213 @@ class InputOutputManager {
         });
         browserEvents.Zero.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if (this.state != OProg.Menu){
-                if (browserEvents.Shift.isPressed()) {
-                    this.code.insertAt(this.code.length - this.cursorBack + 1, ")");
-                } else {
-                    this.code.insertAt(this.code.length - this.cursorBack + 1, "0");
+                if(this.state != OProg.RUN){
+                    if (browserEvents.Shift.isPressed()) {
+                        this.code.insertAt(this.code.length - this.cursorBack + 1, ")");
+                    } else {
+                        this.code.insertAt(this.code.length - this.cursorBack + 1, "0");
+                    }
                 }
             }
             this.drawScreen();
         });
         browserEvents.One.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if (this.state != OProg.Menu){
-                if (browserEvents.Shift.isPressed()) {
-                    this.code.insertAt(this.code.length - this.cursorBack + 1, "!");
-                } else {
-                    this.code.insertAt(this.code.length - this.cursorBack + 1, "1");
+                if(this.state != OProg.RUN){
+                    if (browserEvents.Shift.isPressed()) {
+                            this.code.insertAt(this.code.length - this.cursorBack + 1, "!");
+                    } else {
+                        this.code.insertAt(this.code.length - this.cursorBack + 1, "1");
+                    }
                 }
             }
             this.drawScreen();
         });
         browserEvents.Two.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if(this.state != OProg.Menu){
-                this.code.insertAt(this.code.length - this.cursorBack + 1, "2");
+                if(this.state != OProg.RUN){
+                    this.code.insertAt(this.code.length - this.cursorBack + 1, "2");
+                }
             }
             this.drawScreen();
         });
         browserEvents.Three.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if(this.state != OProg.Menu){
-                this.code.insertAt(this.code.length - this.cursorBack + 1, "3");
+                if(this.state != OProg.RUN){
+                    this.code.insertAt(this.code.length - this.cursorBack + 1, "3");
+                }
             }
             this.drawScreen();
         });
         browserEvents.Four.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if(this.state != OProg.Menu){
-                this.code.insertAt(this.code.length - this.cursorBack + 1, "4");
+                if(this.state != OProg.RUN){
+                    this.code.insertAt(this.code.length - this.cursorBack + 1, "4");
+                }
             }
             this.drawScreen();
         });
         browserEvents.Five.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if (this.state != OProg.Menu){
-                if (browserEvents.Shift.isPressed()) {
-                    this.code.insertAt(this.code.length - this.cursorBack + 1, "[");
-                } else {
-                    this.code.insertAt(this.code.length - this.cursorBack + 1, "5");
+                if(this.state != OProg.RUN){
+                    if (browserEvents.Shift.isPressed()) {
+                            this.code.insertAt(this.code.length - this.cursorBack + 1, "[");
+                    } else {
+                        this.code.insertAt(this.code.length - this.cursorBack + 1, "5");
+                    }
                 }
             }
             this.drawScreen();
         });
         browserEvents.Six.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if (this.state != OProg.Menu){
-                if (browserEvents.Shift.isPressed()) {
-                    this.code.insertAt(this.code.length - this.cursorBack + 1, "]");
-                } else {
-                    this.code.insertAt(this.code.length - this.cursorBack + 1, "6");
+                if(this.state != OProg.RUN){
+                    if (browserEvents.Shift.isPressed()) {
+                            this.code.insertAt(this.code.length - this.cursorBack + 1, "]");
+                    } else {
+                        this.code.insertAt(this.code.length - this.cursorBack + 1, "6");
+                    }
                 }
             }
             this.drawScreen();
         });
         browserEvents.Seven.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if (this.state != OProg.Menu){
+                if(this.state != OProg.RUN){
                 if (browserEvents.Shift.isPressed()) {
-                    this.code.insertAt(this.code.length - this.cursorBack + 1, "&");
+                        this.code.insertAt(this.code.length - this.cursorBack + 1, "&");
                 } else {
                     this.code.insertAt(this.code.length - this.cursorBack + 1, "7");
+                }
                 }
             }
             this.drawScreen();
         });
         browserEvents.Eight.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if (this.state != OProg.Menu){
+                if(this.state != OProg.RUN){
                 if (browserEvents.Shift.isPressed()) {
-                    this.code.insertAt(this.code.length - this.cursorBack + 1, "*");
+                        this.code.insertAt(this.code.length - this.cursorBack + 1, "*");
                 } else {
                     this.code.insertAt(this.code.length - this.cursorBack + 1, "8");
+                }
                 }
             }
             this.drawScreen();
         });
         browserEvents.Nine.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if (this.state != OProg.Menu){
+                if(this.state != OProg.RUN){
                 if (browserEvents.Shift.isPressed()) {
-                    this.code.insertAt(this.code.length - this.cursorBack + 1, "(");
+                        this.code.insertAt(this.code.length - this.cursorBack + 1, "(");
                 } else {
                     this.code.insertAt(this.code.length - this.cursorBack + 1, "9");
+                }
                 }
             }
             this.drawScreen();
         });
         browserEvents.BackTick.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if(this.state != OProg.Menu){
-                this.code.insertAt(this.code.length - this.cursorBack + 1, "\"");
+                if(this.state != OProg.RUN){
+                    this.code.insertAt(this.code.length - this.cursorBack + 1, "\"")
+                };
             }
             this.drawScreen();
         });
         browserEvents.Alt.onEvent(browserEvents.KeyEvent.Pressed, () => {
-            if (this.state != OProg.Menu) {
+            if (this.state != OProg.Menu) 
+            if(this.state != OProg.RUN){{
                 this.code.splice(this.code.length - this.cursorBack, 1);
-            }
+    
+   }         }
             this.drawScreen();
         });
         browserEvents.Comma.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if (this.state != OProg.Menu){
+                if(this.state != OProg.RUN){
                 if (browserEvents.Shift.isPressed()) {
-                    this.code.insertAt(this.code.length - this.cursorBack + 1, "<");
+                        this.code.insertAt(this.code.length - this.cursorBack + 1, "<");
                 } else {
                     this.code.insertAt(this.code.length - this.cursorBack + 1, ",");
+                }
                 }
             }
             this.drawScreen();
         });
         browserEvents.Period.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if (this.state != OProg.Menu){
+                if(this.state != OProg.RUN){
                 if (browserEvents.Shift.isPressed()) {
-                    this.code.insertAt(this.code.length - this.cursorBack + 1, ">");
+                        this.code.insertAt(this.code.length - this.cursorBack + 1, ">");
                 } else {
                     this.code.insertAt(this.code.length - this.cursorBack + 1, ".");
+                }
                 }
             }
             this.drawScreen();
         });
         browserEvents.ForwardSlash.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if (this.state != OProg.Menu){
+                if(this.state != OProg.RUN){
                 if (browserEvents.Shift.isPressed()) {
-                    this.code.insertAt(this.code.length - this.cursorBack + 1, "'");
+                        this.code.insertAt(this.code.length - this.cursorBack + 1, "'");
                 } else {
                     this.code.insertAt(this.code.length - this.cursorBack + 1, "/");
-                }
+                }}
             }
             this.drawScreen();
         });
         browserEvents.BackSlash.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if (this.state != OProg.Menu){
+                if(this.state != OProg.RUN){
                 if (browserEvents.Shift.isPressed()) {
-                    this.code.insertAt(this.code.length - this.cursorBack + 1, "|");
+                        this.code.insertAt(this.code.length - this.cursorBack + 1, "|");
                 } else {
                     this.code.insertAt(this.code.length - this.cursorBack + 1, "\\");
+                }
                 }
             }
             this.drawScreen();
         });
         browserEvents.SemiColon.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if (this.state != OProg.Menu){
+                if(this.state != OProg.RUN){
                 if (browserEvents.Shift.isPressed()) {
-                    this.code.insertAt(this.code.length - this.cursorBack + 1, ":");
+                        this.code.insertAt(this.code.length - this.cursorBack + 1, ":");
                 } else {
                     this.code.insertAt(this.code.length - this.cursorBack + 1, ";");
+                }
                 }
             }
             this.drawScreen();
         });
         browserEvents.Hyphen.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if(this.state != OProg.Menu){
-                this.code.insertAt(this.code.length - this.cursorBack + 1, "-");
+                if(this.state != OProg.RUN){
+                    this.code.insertAt(this.code.length - this.cursorBack + 1, "-");
+                }
             }
             this.drawScreen();
         });
         browserEvents.Equals.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if (this.state != OProg.Menu){
+                if(this.state != OProg.RUN){
                 if (browserEvents.Shift.isPressed()) {
-                    this.code.insertAt(this.code.length - this.cursorBack + 1, "+");
+                        this.code.insertAt(this.code.length - this.cursorBack + 1, "+");
                 } else {
                     this.code.insertAt(this.code.length - this.cursorBack + 1, "=");
+                }
                 }
             }
             this.drawScreen();
         });
         browserEvents.Space.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if(this.state != OProg.Menu){
-                this.code.insertAt(this.code.length - this.cursorBack + 1, " ")
-            }
+                if(this.state != OProg.RUN){
+                this.code.insertAt(this.code.length - this.cursorBack + 1, " ");
+
+}            }
             this.drawScreen();
         });
         browserEvents.ArrowUp.onEvent(browserEvents.KeyEvent.Pressed, () => {
@@ -486,24 +581,33 @@ class InputOutputManager {
         });
         browserEvents.ArrowLeft.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if (this.state != OProg.Menu){
+                if(this.state != OProg.RUN){
                 this.cursorBack += 1;
-                if (this.cursorBack - 1 > this.code.length) {
+                    if (this.cursorBack - 1 > this.code.length) {
                     this.cursorBack = this.code.length + 1;
+                }
                 }
             }
             this.drawScreen();
         });
         browserEvents.ArrowRight.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if (this.state != OProg.Menu){
+                if(this.state != OProg.RUN){
                 this.cursorBack -= 1;
                 if (this.cursorBack <= 1) {
                     this.cursorBack = 1;
+                }
                 }
             }
             this.drawScreen();
         });
         browserEvents.CapsLock.onEvent(browserEvents.KeyEvent.Pressed, () => {
-            // run as code
+            if(this.state == OProg.TYPING){
+                this.state = OProg.RUN;
+                ASMrun(asmChunkify(asmLineify(this.code)));
+            } else if (this.state == OProg.RUN){
+                this.state = OProg.TYPING;
+            }
         });
     }
 }
