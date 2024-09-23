@@ -1,6 +1,6 @@
 /*
 valid funcs:
-    save - {params: [location: number - index of location in memory, type: type - could be num, str, bool, list<type>; val: any - type is based on type input]} - saves a value of a type to an index in memory;
+    save - {params: [location: number - index of location in memory, type: type - could be num, str, bool, list; val: any - type is based on type input]} - saves a value of a type to an index in memory;
     load - {params: [location: number - place to load from]} loads a value from an index in memory and console logs it;
     add - {params: [location: number - place to save sum to], num1: number - 1st number to add, num2: number - 2nd number to add};
     goto - {params: [location: number - line to go to]} - goes back/forwards to a specific line;
@@ -12,9 +12,10 @@ valid funcs:
     {1, num, 1},
 ]
 
-0    save b0 num a0;
-1    save b1 num a1;
+0    save a0 num a0;
+1    save a1 num a1;
 2    add b0 a0 a1;
+3    save a1 LIST NUM a1 b2 i3 a1
 
  * a23 = 23
  * b23 = thing at index 23 of memory
@@ -23,7 +24,7 @@ valid funcs:
  * i1  = is left pressed
  * i2  = is down pressed
  * i3  = is right pressed
- * i(letter, 'SHIFT', 'ALT' or 'CTRL') = is key pressed (ROM)
+ * i4(letter, 'SHIFT', 'ALT' or 'CTRL') = is key pressed (ROM)
 
 */
 

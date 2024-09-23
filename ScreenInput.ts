@@ -606,6 +606,7 @@ class InputOutputManager {
                 this.state = OProg.RUN;
                 ASMrun(asmChunkify(asmLineify(this.code)));
             } else if (this.state == OProg.RUN){
+                // stop program running somehow
                 this.state = OProg.TYPING;
             }
         });
