@@ -136,7 +136,11 @@ class InputOutputManager {
         browserEvents.C.onEvent(browserEvents.KeyEvent.Pressed, () => {
             if(this.state != OProg.Menu){
                 if(this.state != OProg.RUN){
-                    this.code.insertAt(this.code.length - this.cursorBack + 1, "C");
+                    if(browserEvents.Control.isPressed()){
+                        console.log(JSON.stringify(this.code));
+                    } else{
+                        this.code.insertAt(this.code.length - this.cursorBack + 1, "C");
+                    }
                 }
             }
             this.drawScreen();

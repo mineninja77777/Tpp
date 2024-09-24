@@ -1,4 +1,5 @@
 function ASMrun(code: ASMline[]) {
+
     let memory: ASMmem[] = [];
 
     function getNumber(str: string): number{
@@ -71,7 +72,20 @@ function ASMrun(code: ASMline[]) {
                 // to be implemented
             }
         }
+        if (code[currentLine].contents[0] == "WAIT") {
+            pause(getNumber(code[currentLine].contents[1]));
+        }
+        if (code[currentLine].contents[0] == "GOTO"){
+            currentLine = getNumber(code[currentLine].contents[1])-1;
+        }
+        if (code[currentLine].contents[0] == "CGTO") {
+            if ((code[currentLine].contents[2] == "<" && getNumber(code[currentLine].contents[1]) < getNumber(code[currentLine].contents[3])) || (code[currentLine].contents[2] == "=" && getNumber(code[currentLine].contents[1]) == getNumber(code[currentLine].contents[3])) || (code[currentLine].contents[2] == ">" && getNumber(code[currentLine].contents[1]) > getNumber(code[currentLine].contents[3]))){
+                currentLine = getNumber(code[currentLine].contents[4]) - 1;
+            }
+        }
 
         currentLine++;
     }
+
+    console.log("program completed");
 }

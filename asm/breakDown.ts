@@ -2,7 +2,8 @@
 valid funcs:
     save - {params: [location: number - index of location in memory, type: type - could be num, str, bool, list; val: any - type is based on type input]} - saves a value of a type to an index in memory;
     load - {params: [location: number - place to load from]} loads a value from an index in memory and console logs it;
-    add - {params: [location: number - place to save sum to], num1: number - 1st number to add, num2: number - 2nd number to add};
+    add - {params: [location: number - place to save sum to, num1: number - 1st number to add, num2: number - 2nd number to add]};
+    wait {params: [time: number]} waits for time ms
     goto - {params: [location: number - line to go to]} - goes back/forwards to a specific line;
     cgoto - {params: [val1: number, val2: number, pos: int]} - goes to pos if val1 == val2, conditional goto;
 
