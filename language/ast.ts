@@ -1,4 +1,6 @@
-type NodeType = 
+// unlikely to finish
+
+type NodeType =
     | "Program" 
     | "NumericLiteral" 
     | "Identifier" 

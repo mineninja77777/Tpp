@@ -54,8 +54,6 @@ function ASMrun(code: ASMline[]) {
             }
             if (code[currentLine].contents[2] == "BOOL") {
                 memory[getNumber(code[currentLine].contents[1])] = { type: "bool", trfa: getBool(code[currentLine].contents[3]) } as ASMbool;
-            } if(code[currentLine].contents[2] == "LIST"){
-                // to be implemented
             }
         }
         if (code[currentLine].contents[0] == "LOAD"){
@@ -68,9 +66,6 @@ function ASMrun(code: ASMline[]) {
             if (memory[getNumber(code[currentLine].contents[2])].type == "str") {
                 memory[getNumber(code[currentLine].contents[1])] = { type: "str", txt: getString(code[currentLine].contents[3]) + getString(code[currentLine].contents[2]) } as ASMstr;
             }
-            if (memory[getNumber(code[currentLine].contents[2])].type == "list") {
-                // to be implemented
-            }
         }
         if (code[currentLine].contents[0] == "WAIT") {
             pause(getNumber(code[currentLine].contents[1]));
@@ -81,6 +76,11 @@ function ASMrun(code: ASMline[]) {
         if (code[currentLine].contents[0] == "CGTO") {
             if ((code[currentLine].contents[2] == "<" && getNumber(code[currentLine].contents[1]) < getNumber(code[currentLine].contents[3])) || (code[currentLine].contents[2] == "=" && getNumber(code[currentLine].contents[1]) == getNumber(code[currentLine].contents[3])) || (code[currentLine].contents[2] == ">" && getNumber(code[currentLine].contents[1]) > getNumber(code[currentLine].contents[3]))){
                 currentLine = getNumber(code[currentLine].contents[4]) - 1;
+            }
+        }
+        if (code[currentLine].contents[0] == "BGTO"){
+            if(getBool(code[currentLine].contents[1])){
+                currentLine = getNumber(code[currentLine].contents[2]) - 1;
             }
         }
 
